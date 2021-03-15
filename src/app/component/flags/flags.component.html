@@ -1,0 +1,314 @@
+<!-- <style>
+    #myDIV {
+        width: 100%;
+        padding: 50px 0;
+        text-align: center;
+        background-color: lightblue;
+        margin-top: 20px;
+    }
+</style>
+<button onclick="myFunction()">Try it</button>
+<div id="myDIV">
+    This is my DIV element.
+</div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script> -->
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="grid-stack-item-content ui-draggable-handle" style="height: 450px; width: 400px;">
+                <div class="analytics-panel-wrapper" id="analytics-panel-wrapper">
+                    <div class="analytics-panel-header" ondblclick="$('#analytics-panel-body').toggle()">
+                        <div class="analytics-panel-header-left">
+                            <img src="/assets/dist/img/icons/flag.png">
+                            <span>Chats and Flags</span>
+                        </div>
+                    </div>
+                    <div class="flag-panel-body gridster-item-content" id="analytics-panel-body"
+                        [formGroup]="ChatFlagFrom" (ngSubmit)="onSubmit()">
+                        <div class="search-area">
+                            <div>
+                                <div class="form-group">
+                                    <label>Volunteer</label>
+                                    <select formControlName="username" name="username">
+                                        <option *ngFor="let user of userlist" value="{{user.username}}">
+                                            {{user.username}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select formControlName="status">
+                                        <option value="1">Active</option>
+                                        <option value="2">Resolve</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select formControlName="country" (change)="seletCounty(country)" name="country">
+                                        <option *ngFor="let country of countryList" value="{{country.id}}">
+                                            {{country.country_name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>State</label>
+                                    <select  formControlName="state" (change)="seletCounty(state)" id="state">
+                                        <option *ngFor="let state of stateList" value="{{state.id}}">
+                                            {{state.state_name}} </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- <div class="form-group">
+                                    <label> Time Zone   </label>
+                                    <select><option *ngFor="let zone of zoneList" value="{{zone.value}}">
+                                        {{zone.text}} </option></select>
+                                </div> -->
+                                <div class="form-group">
+                                    <label>Month</label>
+                                    <input type="date" formControlName="startMonth">
+                                    <!-- <select formControlName="startMonth">
+                                        <option value="01">january </option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">Auguest</option>
+                                        <option value="09">September</option>
+                                        <option value="10">Octember</option>
+                                        <option value="11">Novmber</option>
+                                        <option value="12">Decmber</option>
+
+                                    </select> -->
+                                </div>
+                                <div class="form-group">
+                                    <label>To Month</label>
+                                    <input type="date" formControlName="endMonth" value="">
+                                    <!-- <select formControlName="endMonth">
+                                        <option value="01">january </option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">Auguest</option>
+                                        <option value="09">September</option>
+                                        <option value="10">Octember</option>
+                                        <option value="11">Novmber</option>
+                                        <option value="12">Decmber</option>
+                                    </select> -->
+                                </div>
+                                <!-- <div class="form-group">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                                        formControlName="date" ngbDatepicker #d="ngbDatepicker">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                            type="button"></button>
+                                    </div>
+                                </div>  -->
+
+
+                                <div class="form-group">
+                                    <label>Time: From</label>
+                                    <input formControlName="fromTime" type="time">
+                                    <!-- <select formControlName="fromTime">
+                                        <option value="1">1 </option>
+                                        <option value="1:30">1:30</option>
+                                        <option value="2">2</option>
+                                        <option value="2:30">2:30</option>
+                                        <option value="3">3</option>
+                                        <option value="3:30">3:30</option>
+                                        <option value="4">4</option>
+                                        <option value="4:30">4:30</option>
+                                        <option value="5">5</option>
+                                        <option value="5:30">5:30</option>
+                                        <option value="6">6</option>
+                                        <option value="6:30">6:30</option>
+                                        <option value="7">7</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8">8</option>
+                                        <option value="8:30">8:30</option>
+                                        <option value="9">9</option>
+                                        <option value="9:30">9:30</option>
+                                        <option value="10">10</option>
+                                        <option value="10:30">10:30</option>
+                                        <option value="11">11</option>
+                                        <option value="11:30">11:30</option>
+                                        <option value="12">12</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13">13</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="14">14</option>
+                                        <option value="14:30">14:30</option>
+                                        <option value="15">15</option>
+                                        <option value="15:30">15:30</option>
+                                        <option value="16">16</option>
+                                        <option value="16:30">16:30</option>
+                                        <option value="17">17</option>
+                                        <option value="17:30">17:30</option>
+                                        <option value="18">18</option>:
+                                        <option value="18:30">18:30</option>
+                                        <option value="19">19</option>
+                                        <option value="19:30">19:30</option>
+                                        <option value="20">20</option>
+                                        <option value="20:30">20:30</option>
+                                        <option value="21">21</option>
+                                        <option value="21:30">21:30</option>
+                                        <option value="22">22</option>
+                                        <option value="22:30">22:30</option>
+                                        <option value="23">23</option>
+                                        <option value="23:30">23:30</option>
+                                    </select> -->
+                                </div>
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <span>To Time:
+                                        <input formControlName="toTime" type="time">
+                                    </span>
+                                    <!-- <select formControlName="toTime">
+                                            <option value="1">1 </option>
+                                            <option value="1:30">1:30</option>
+                                            <option value="2">2</option>
+                                            <option value="2:30">2:30</option>
+                                            <option value="3">3</option>
+                                            <option value="3:30">3:30</option>
+                                            <option value="4">4</option>
+                                            <option value="4:30">4:30</option>
+                                            <option value="5">5</option>
+                                            <option value="5:30">5:30</option>
+                                            <option value="6">6</option>
+                                            <option value="6:30">6:30</option>
+                                            <option value="7">7</option>
+                                            <option value="7:30">7:30</option>
+                                            <option value="8">8</option>
+                                            <option value="8:30">8:30</option>
+                                            <option value="9">9</option>
+                                            <option value="9:30">9:30</option>
+                                            <option value="10">10</option>
+                                            <option value="10:30">10:30</option>
+                                            <option value="11">11</option>
+                                            <option value="11:30">11:30</option>
+                                            <option value="12">12</option>
+                                            <option value="12:30">12:30</option>
+                                            <option value="13">13</option>
+                                            <option value="13:30">13:30</option>
+                                            <option value="14">14</option>
+                                            <option value="14:30">14:30</option>
+                                            <option value="15">15</option>
+                                            <option value="15:30">15:30</option>
+                                            <option value="16">16</option>
+                                            <option value="16:30">16:30</option>
+                                            <option value="17">17</option>
+                                            <option value="17:30">17:30</option>
+                                            <option value="18">18</option>:
+                                            <option value="18:30">18:30</option>
+                                            <option value="19">19</option>
+                                            <option value="19:30">19:30</option>
+                                            <option value="20">20</option>
+                                            <option value="20:30">20:30</option>
+                                            <option value="21">21</option>
+                                            <option value="21:30">21:30</option>
+                                            <option value="22">22</option>
+                                            <option value="22:30">22:30</option>
+                                            <option value="23">23</option>
+                                            <option value="23:30">23:30</option>
+                                        </select></span> -->
+                                </div>
+                                <button type="submit" class="btn btn-primary" (click)="onSubmit()"> Search</button>
+                                <button type="submit" class="btn btn-primary" (click)="reset()"> Reset</button>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <div class="key-terms">
+                                <h6>Key Terms and Times:</h6><span class="time">00:05:47</span>
+                                <div class="bible-searchbar-wrapper">
+                                    <div class="bible-searchbar">
+                                        <input width="100%" type="text" placeholder="Search...">
+                                        <i href="#" class="fa fa-search"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>User ID</th>
+                                        <th>Admin ID</th>
+                                        <th>Duration</th>
+                                        <th>Started At:</th>
+                                        <th>Last Message At:</th>
+                                        <th>Status</th>
+                                        <th>Time Zone</th>
+                                    </tr>
+                                    <tr *ngFor="let room of allChatRooms; let i = index" (click)="getchat(room)">
+                                        <td *ngIf="room.IS_FLAG == 1" class="light"><img
+                                                src="/assets/dist/img/icons/flagged-color.png">{{room.USER_NAME}}</td>
+                                        <td *ngIf="room.IS_FLAG == 0" class="light">{{room.USER_NAME}}</td>
+
+                                        <td>{{room.PASTOR_ID}}</td>
+                                        <td class="dark">222 </td>
+                                        <td class="dark">{{room.createdAt | date: 'dd/MM/yyyy mm ss'}}</td>
+                                        <td class="dark">{{room.updatedAt | date: 'dd/MM/yyyy mm ss'}}</td>
+                                        <td *ngIf="room.CHAT_STATUS == 0" class="light">In Queue</td>
+                                        <td *ngIf="room.CHAT_STATUS == 1" class="light">Live</td>
+                                        <td *ngIf="room.CHAT_STATUS == 2" class="light">Closed</td>
+
+                                        <td class="light">CST</td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td class="light">Rico</td>
+                                        <td>JH</td>
+                                        <td class="dark">01:05:07</td>
+                                        <td class="dark">October 07/2020 - 9:05am</td>
+                                        <td class="dark">October 07/2020 - 9:05am</td>
+                                        <td class="light">Opened</td>
+                                        <td class="light">CST</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="light">Rico</td>
+                                        <td>JH</td>
+                                        <td class="dark">01:05:07</td>
+                                        <td class="dark">October 07/2020 - 9:05am</td>
+                                        <td class="dark">October 07/2020 - 9:05am</td>
+                                        <td class="light">Opened</td>
+                                        <td class="light">CST</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="light">Rico</td>
+                                        <td>JH</td>
+                                        <td class="dark">01:05:07</td>
+                                        <td class="dark">October 07/2020 - 9:05am</td>
+                                        <td class="dark">October 07/2020 - 9:05am</td>
+                                        <td class="light">Opened</td>
+                                        <td class="light">CST</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

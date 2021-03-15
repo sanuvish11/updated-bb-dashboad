@@ -1,0 +1,182 @@
+<div class="mp3-wrapper" id="mp3-wrapper">
+
+    <!-- Personal Favs Header-->
+    <div class="mp3-header" ondblclick="$('#mp3-body').toggle();">
+        <div class="mp3-header-left">
+            <img src="/assets/dist/img/icons/workarea-sound-icon.png">
+            <span>MP3's</span>
+        </div>
+        <div class="mp3-header-right">
+            <a class="mp3-dot-menu" href="javascript:void(0)" onclick="toggleAction('mp3-body')"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+            <a (click)="toggleclose()" class="gridster-item-content"><i class="fa fa-close"></i></a>
+        </div>
+    </div>
+    <div class="bible-body" id="bible-body">
+        <div class="buttons" >
+            {{msg}}
+            <button class="ot" name="ot" (click)="toggleTestament(1)">OT</button>
+            <button class="nt" (click)="toggleTestament(2)">NT</button>
+        </div>
+        <div class="testament gridster-item-content" *ngIf="oldTestament">
+            <h5 *ngIf="this.SelectedTestament == 'OT'">Old Testament</h5>
+            <h5 *ngIf="this.SelectedTestament == 'NT'">New Testament</h5>
+            <div >
+                <div class="row biblechapterTable" *ngIf="oldTestament">
+                    <div class="col-1 borderdisplay" *ngFor="let item of allbibleChapters">
+                        <span (click)="bookChapters(item.BOOK_ABBR)">{{item.BOOK_ABBR}}</span>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div >
+
+        <div class="row biblechapterTable" (click)="toogelheader()" *ngIf="chapterList">
+                
+            <div class="col-1 borderdisplay" *ngFor="let item of chapterListData">
+                <span (click)="getMp3(item)" >{{item}}</span>
+                
+            </div>
+
+        </div>
+    
+        <!-- <div class="chapter gridster-item-content"  *ngIf="chapterList">
+            <h5> {{bookFullName}}</h5>
+            <div class="row noMargin">
+                <i *ngIf="PrevButton" class="fa fa-angle-double-left double1 col-1" aria-hidden="true" (click)="prevChapters()"></i>
+                
+                    <div class="col-1 chapterListStyle" *ngFor="let cl of chapterListData" (click)="getMp3(cl)">{{cl}}</div>
+                  
+            
+                
+                <i *ngIf="nextButton" class="fa fa-angle-double-right double1 col-1" aria-hidden="true " (click)="nextChapters()"></i>
+            </div>
+        </div> -->
+        <div class="bible-searchbar-wrapper gridster-item-content">
+            <div class="bible-searchbar">
+                <input width="100%" type="text"
+                 placeholder=" Search... ">
+                <i  class="fa fa-search "></i>
+            </div>
+            <div class="select-wrapper">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="custom-select-div ">
+                            <label>
+                                <select [(ngModel)]="version">
+                                    <option value="NASB" selected>NASB</option>
+                                    <option value="ESV">ESV</option>
+                                    <option value="NIV">NIV</option>
+                                    <!-- <option value="KJV">KJV</option> -->
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <div class="col-6">
+                        <div class="custom-select-div ">
+                            <label>Records count</label>
+                            <label style="margin-left: 2px;">
+                                <select [(ngModel)]="pageCountSchema" [value]="pageCountSchema" (change)="changedPageLOadSchema('pagecount')">
+                                    <option value=10>10</option>
+                                    <option value=20>20</option>
+                                    <option value=50>50</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div> -->
+                </div>
+             
+
+               
+            </div>
+        </div>
+        <div class="bible-verse ">
+            <div class="mySlides">
+                <div class="navigation-wrapper">
+                    <div class="navigation gridster-item-content" id="isShowDiv2">
+                        <div class="navigation-inner gridster-item-content ">
+                            <!-- <i class="fa fa-angle-double-left double1 " aria-hidden="true "></i>
+                            <i class="fa fa-angle-left gridster-item-content " aria-hidden="true "
+                                (click)="pervious()"></i> -->
+                            <h6 *ngIf="heading">{{ book }} {{ chapter }}</h6>
+                            <!-- <h6 *ngIf="SearchHeader">{{searchQuery}} </h6> -->
+                            <!-- <i class="fa fa-angle-right gridster-item-content rightArrow" aria-hidden="true " (click)="next()"
+                                ></i>
+                            <i class="fa fa-angle-double-right double1 " aria-hidden="true "></i> -->
+                        </div>
+                    </div>
+                    <a class="bible-navigation-dot-menu" href="javascript:void(0) " (click)="toggleShow()"
+                        type="checkbox"><i class="fa fa-ellipsis-v" aria-hidden="true "></i></a>
+                </div>
+               
+                <div class="table-responsive ">
+                    <table>
+                        <tbody>
+
+                            <tr *ngFor="let item of BiblePdfs, let i= index">
+                                <td class=" CR-tableLeft" >
+                                    <!-- <h5>{{item.division}}</h5> -->
+                                    <!-- <h5>{{item.BOOK }} {{ item.CHAPTER}}</h5> -->
+                                    <i class="fa fa-volume-up" aria-hidden="true"></i>
+
+                                    <div class="actionDiv " *ngIf="isShown">
+                                        <span class="dropdown">
+                                            <span style="background: #ffce79; " class="btn" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                Add
+                                            </span>
+
+                                            <!-- BIBLE_VERSION: "NASB"
+BOOK: "GEN"
+CHAPTER: "1"
+FATHER_ID: "Admin"
+FILE_PATH: "/uploads/javascript_tutorial.pdf_1612628817549.pdf"
+IS_ACTIVE: 1
+PDF_LABEL: "gen 1.2"
+TESTAMENT: "OT"
+createdAt: "2021-02-06T16:26:57.000Z"
+id: 10
+updatedAt: "2021-02-06T16:26:57.000Z" -->
+                                            <div style="background: #ffce79;" class="dropdown-menu "
+                                                aria-labelledby="dropdownMenuButton">
+
+                                                <a class="dropdown-item"
+                                                (click)="onSubmit(item.BOOK, item.CHAPTER,item.MP3_LABEL, item.FILE_PATH)">Work Area</a>
+        
+                                                 <!-- <a class="dropdown-item"
+                                                    (click)="savejourney(item.verse,item.text)">Journey</a> -->
+                                                <!-- <a class="dropdown-item"
+                                                    (click)="savePersonalfav(item.verse,item.text)">Personal
+                                                    Favs</a> -->
+
+                                            </div>
+
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="CR-tableRight ">
+                                    <p>
+                                        {{item.MP3_LABEL}}
+                                        <!-- {{item.text}} -->
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <!-- <span *ngIf="BibleVerses?.length > 0" (click)="changedPageLOadSchema1('viewMore')">View More</span> -->
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>

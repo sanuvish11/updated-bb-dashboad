@@ -1,0 +1,199 @@
+<div class="row"> 
+
+<div class="col-2">
+    <!-- <app-side-menu (toggleSideMenu)="toggleSideMenuFunction($event)"></app-side-menu> -->
+
+    <!-- <div class="col-2"> -->
+<div id="sidebar-container" class="sidebar-expanded d-none d-md-block bg-light">
+<ul class="list-group">
+
+    <a data-toggle="sidebar-colapse" style="background-color: #f2c373; min-width: 100%; width: 100%;" 
+    class=" text-dark list-group-item list-group-item-action d-flex align-items-center">
+        <div class="d-flex w-99 justify-content-start align-items-center">
+            <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+            <span id="collapse-text" class="menu-collapsed">Collapse</span>
+        </div>
+    </a>
+  
+    <a (click)="navigate('dashboard')" data-toggle="collapse" aria-expanded="false" class="text-dark bg-dark2  list-group-item list-group-item-action flex-column align-items-start"  >
+        <div class="d-flex w-100 justify-content-start align-items-center">
+            <span><img src="/assets/dist/img/icons/sidebar-icons/dashboard-icon.png"></span>
+            <span class="menu-collapsed">Dashboard</span>
+
+        </div>
+    </a>
+
+    <a (click)="navigate('journey')" data-toggle="collapse" aria-expanded="false"  class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+            <span><img src="/assets/dist/img/icons/sidebar-icons/journey-icon.png"></span>
+            <span class="menu-collapsed">Journey</span>
+
+        </div>
+    </a>
+
+    <a (click)="navigate('chat')" data-toggle="collapse" aria-expanded="false"  class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start" >
+        <div class="d-flex w-100 justify-content-start align-items-center">
+            <span><img src="/assets/dist/img/icons/sidebar-icons/chat-icon.png"></span>
+            <span class="menu-collapsed">Chat</span>
+        </div>
+    </a>
+    <a (click)="navigate('reports')"  data-toggle="collapse" aria-expanded="false"  class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+            <span><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+            <span class="menu-collapsed">Reports and Metrics</span>
+
+        </div>
+    </a>
+    <!-- <a data-toggle="collapse" aria-expanded="false" (click)="toggelemp3pdfect()" class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+            <span><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+            <span class="menu-collapsed"> toggelelustde</span>
+
+        </div>
+    </a> -->
+
+    <a (click)="navigate('flags')"  data-toggle="collapse" aria-expanded="false" class=" btn-1 sidebar_item_title bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+            <span><img src="/assets/dist/img/icons/sidebar-icons/flag-icon.png"></span>
+            <span class="menu-collapsed">Flags</span>
+
+        </div>
+    </a>
+    <a (click)="navigate('registration')" data-toggle="collapse" aria-expanded="false" class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+            <span><img src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span>
+            <span class="menu-collapsed">Volunteer Registration</span>
+
+        </div>
+    </a>
+    <a  data-toggle="collapse" aria-expanded="false" class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start" style="background-color: skyblue;">
+     <div class="d-flex w-100 justify-content-start align-items-center">
+         <!-- <span><img src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span> -->
+         <span class="menu-collapsed">Uploads</span>
+
+     </div>
+ </a>
+</ul>
+</div>
+
+
+<!-- </div> -->
+
+</div>
+
+
+
+<div class="col-10">
+    <div class="messageBox" *ngIf="showMessageBox" [ngStyle]="{'background-color':bgColor}">
+        <p>{{message}} </p>
+    </div>
+
+    <div class="tab">
+        <button class="tablinks" (click)="openCity('uploadPdf')">upload Pdf</button>
+        <button class="tablinks" (click)="openCity('uploadMP3')">upload MP3</button>
+     
+      </div>
+      
+      <div *ngIf="uploadPdfTab" class="tabcontent">
+        <h3>Upload pdf</h3>
+        <div>
+            <label for="select testament">select bible version</label>
+            <select [(ngModel)]="SelectedVersion">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="ESV">ESV</option>
+                <option value="NASB">NASB</option>
+                <option value="NIV">NIV</option>
+            </select>
+        </div>
+        <div>
+            <label for="select testament">select testament</label>
+            <select [(ngModel)]="SelectedTestament" value="{{SelectedTestament}}" (change)="getbiblebooks()">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="OT">OT</option>
+                <option value="NT">NT</option>
+            </select>
+        </div>
+        <div>
+            <label for="select book">select book</label>
+            <select [(ngModel)]="book"  (change)="SelectedBookChapters()">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="book.BOOK_ABBR" *ngFor="let book of allbibleBooks"> {{book.BOOK}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+        </div>
+        <div>
+            <label for="select chapter">select chapter</label>
+            <select [(ngModel)]="chapter">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="chap" *ngFor="let chap of chaptersInBook"> {{chap}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+        </div>
+        <div>
+            <label for="select chapter">select file</label>
+            <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
+
+        </div>
+        <div>
+            <label for="select chapter">pdf Label to display</label>
+           <input type="text" [(ngModel)]="pdfLabel">
+
+        </div>
+<button (click)="Save('pdf')">save </button>
+      </div>
+      
+      <div *ngIf="uploadMP3Tab" class="tabcontent">
+        <h3>Upload mp3</h3>
+        <div>
+            <label for="select testament">select bible version</label>
+            <select [(ngModel)]="SelectedVersion">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="ESV">ESV</option>
+                <option value="NASB">NASB</option>
+                <option value="NIV">NIV</option>
+            </select>
+        </div>
+        <div>
+            <label for="select testament">select testament</label>
+            <select [(ngModel)]="SelectedTestament" value="{{SelectedTestament}}" (change)="getbiblebooks()">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option value="OT">OT</option>
+                <option value="NT">NT</option>
+            </select>
+        </div>
+        <div>
+            <label for="select book">select book</label>
+            <select [(ngModel)]="book"  (change)="SelectedBookChapters()">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="book.BOOK_ABBR" *ngFor="let book of allbibleBooks"> {{book.BOOK}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+        </div>
+        <div>
+            <label for="select chapter">select chapter</label>
+            <select [(ngModel)]="chapter">
+                <!-- <option selected="true" disabled="disabled">select testament</option> -->
+                <option [value]="chap" *ngFor="let chap of chaptersInBook"> {{chap}}</option>
+                <!-- <option value="NT">NT</option> -->
+            </select>
+        </div>
+        <div>
+            <label for="select chapter">select file</label>
+            <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept="mp3">
+
+        </div>
+        <div>
+            <label for="select chapter">mp3 Label to display</label>
+           <input type="text" [(ngModel)]="pdfLabel">
+
+        </div>
+<button (click)="Save('mp3')">save </button>
+        
+      </div>
+  
+      
+     
+
+
+</div>
+</div>
