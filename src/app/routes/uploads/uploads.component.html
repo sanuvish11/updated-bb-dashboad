@@ -7,39 +7,37 @@
 <div id="sidebar-container" class="sidebar-expanded d-none d-md-block bg-light">
 <ul class="list-group">
 
-    <a data-toggle="sidebar-colapse" style="background-color: #f2c373; min-width: 100%; width: 100%;" 
-    class=" text-dark list-group-item list-group-item-action d-flex align-items-center">
-        <div class="d-flex w-99 justify-content-start align-items-center">
+    <a data-toggle="sidebar-colapse" class=" text-dark sidenav-collapse">
+        <div class="nav-expand-close">
             <span id="collapse-icon" class="fa fa-2x mr-3"></span>
-            <span id="collapse-text" class="menu-collapsed">Collapse</span>
         </div>
     </a>
   
-    <a (click)="navigate('dashboard')" data-toggle="collapse" aria-expanded="false" class="text-dark bg-dark2  list-group-item list-group-item-action flex-column align-items-start"  >
+    <a (click)="navigate('dashboard')" data-toggle="collapse" aria-expanded="false" class="main-nav-item text-dark bg-dark2  list-group-item list-group-item-action flex-column align-items-start"  >
         <div class="d-flex w-100 justify-content-start align-items-center">
-            <span><img src="/assets/dist/img/icons/sidebar-icons/dashboard-icon.png"></span>
+            <span class="menu-icon-left"><img src="/assets/dist/img/icons/sidebar-icons/dashboard-icon.png"></span>
             <span class="menu-collapsed">Dashboard</span>
 
         </div>
     </a>
 
-    <a (click)="navigate('journey')" data-toggle="collapse" aria-expanded="false"  class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+    <a (click)="navigate('journey')" data-toggle="collapse" aria-expanded="false"  class="main-nav-item bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-start align-items-center">
-            <span><img src="/assets/dist/img/icons/sidebar-icons/journey-icon.png"></span>
+            <span class="menu-icon-left"><img src="/assets/dist/img/icons/sidebar-icons/journey-icon.png"></span>
             <span class="menu-collapsed">Journey</span>
 
         </div>
     </a>
 
-    <a (click)="navigate('chat')" data-toggle="collapse" aria-expanded="false"  class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start" >
+    <a (click)="navigate('chat')" data-toggle="collapse" aria-expanded="false"  class="main-nav-item bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start" >
         <div class="d-flex w-100 justify-content-start align-items-center">
-            <span><img src="/assets/dist/img/icons/sidebar-icons/chat-icon.png"></span>
+            <span class="menu-icon-left"><img src="/assets/dist/img/icons/sidebar-icons/chat-icon.png"></span>
             <span class="menu-collapsed">Chat</span>
         </div>
     </a>
-    <a (click)="navigate('reports')"  data-toggle="collapse" aria-expanded="false"  class="btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+    <a (click)="navigate('reports')"  data-toggle="collapse" aria-expanded="false"  class="main-nav-item btn-change bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
         <div class="d-flex w-100 justify-content-start align-items-center">
-            <span><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
+            <span class="menu-icon-left"><img src="/assets/dist/img/icons/sidebar-icons/reports-icon.png"></span>
             <span class="menu-collapsed">Reports and Metrics</span>
 
         </div>
@@ -52,21 +50,21 @@
         </div>
     </a> -->
 
-    <a (click)="navigate('flags')"  data-toggle="collapse" aria-expanded="false" class=" btn-1 sidebar_item_title bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+    <a (click)="navigate('flags')"  data-toggle="collapse" aria-expanded="false" class="main-nav-item btn-1 sidebar_item_title bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-start align-items-center">
-            <span><img src="/assets/dist/img/icons/sidebar-icons/flag-icon.png"></span>
+            <span class="menu-icon-left"><img src="/assets/dist/img/icons/sidebar-icons/flag-icon.png"></span>
             <span class="menu-collapsed">Flags</span>
 
         </div>
     </a>
-    <a (click)="navigate('registration')" data-toggle="collapse" aria-expanded="false" class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start">
+    <a (click)="navigate('registration')" data-toggle="collapse" aria-expanded="false" class="main-nav-item bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start border-top">
         <div class="d-flex w-100 justify-content-start align-items-center">
-            <span><img src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span>
+            <span class="menu-icon-left"><img src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span>
             <span class="menu-collapsed">Volunteer Registration</span>
 
         </div>
     </a>
-    <a  data-toggle="collapse" aria-expanded="false" class="bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start" style="background-color: skyblue;">
+    <a  data-toggle="collapse" aria-expanded="false" class="main-nav-item bg-dark2 text-dark list-group-item list-group-item-action flex-column align-items-start" style="background-color: skyblue;">
      <div class="d-flex w-100 justify-content-start align-items-center">
          <!-- <span><img src="/assets/dist/img/icons/sidebar-icons/volunteer-icon.png"></span> -->
          <span class="menu-collapsed">Uploads</span>

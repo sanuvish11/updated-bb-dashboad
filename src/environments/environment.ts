@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  AUTH_API:"http://localhost:8080/api/auth/",
-   // AUTH_API : 'http://ec2-3-139-227-180.us-east-2.compute.amazonaws.com:8080/api/auth/',
-  SocketUrl:"http://localhost:8080/",
- //  SocketUrl:"http://ec2-3-139-227-180.us-east-2.compute.amazonaws.com:8080/"
+  //AUTH_API:"http://localhost:8080/api/auth/",
+   AUTH_API : 'http://ec2-3-139-227-180.us-east-2.compute.amazonaws.com:8080/api/auth/',
+  //SocketUrl:"http://localhost:8080/",
+ SocketUrl:"http://ec2-3-139-227-180.us-east-2.compute.amazonaws.com:8080/"
 };
 
 /*

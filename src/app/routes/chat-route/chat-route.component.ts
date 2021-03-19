@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ɵConsole } from '@angular/core';
 import { Router } from '@angular/router';
-import { GridsterConfig, GridsterItem, CompactType, GridsterItemComponentInterface } from 'angular-gridster2';
+import { GridsterConfig, GridsterItem, GridType, CompactType, GridsterItemComponentInterface } from 'angular-gridster2';
 import { ChatComponent } from 'src/app/component/chat/chat.component';
 import { FlagsComponent } from 'src/app/component/flags/flags.component';
 import { JourneyComponent } from 'src/app/component/journey/journey.component';
@@ -665,29 +665,42 @@ export class ChatRouteComponent implements OnInit {
   gridsterInit(){
     this.options = {
       
-      fixedRowHeight: 90,
-      gridType: 'fixed',
+      gridType: GridType.Fixed,
       compactType: CompactType.None,
       margin: 10,
-      outerMargin: false,
+      outerMargin: true,
+      outerMarginTop: null,
+      outerMarginRight: null,
+      outerMarginBottom: null,
+      outerMarginLeft: null,
+      useTransformPositioning: true,
+      mobileBreakpoint: 640,
+      minCols: 1,
+      maxCols: 100,
       minRows: 1,
       maxRows: 100,
-      minItemRows: 1,
-      maxItemRows: 50,
-      defaultItemRows: 3,
-      minCols: 3,
-      maxCols: 90,
       maxItemCols: 100,
-      fixedColWidth: 50,
-      enableEmptyCellClick: false,
       minItemCols: 1,
-      defaultItemCols: 1,
-      maxItemArea: 250,
+      maxItemRows: 100,
+      minItemRows: 1,
+      maxItemArea: 2500,
       minItemArea: 1,
-      swap: false,
-      displayGrid: 'onDrag&Resize',
-      // compactType: 'none', // 'compactUp&Left',compactLeft&Up'
-      pushItems: false,
+      defaultItemCols: 1,
+      defaultItemRows: 1,
+      fixedColWidth: 105,
+      fixedRowHeight: 105,
+      keepFixedHeightInMobile: false,
+      keepFixedWidthInMobile: false,
+      scrollSensitivity: 10,
+      scrollSpeed: 20,
+      enableEmptyCellClick: false,
+      enableEmptyCellContextMenu: false,
+      enableEmptyCellDrop: false,
+      enableEmptyCellDrag: false,
+      enableOccupiedCellDrop: false,
+      emptyCellDragMaxCols: 50,
+      emptyCellDragMaxRows: 50,
+      ignoreMarginInRow: false,
       resizable: { enabled: true },
       draggable: {
         enabled: true
