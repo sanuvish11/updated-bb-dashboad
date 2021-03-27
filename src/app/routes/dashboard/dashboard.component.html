@@ -1,5 +1,5 @@
-    <div class="row"> 
-         <div [ngClass]="iscollapsed?'col-1':'col-2'">
+    <div class="body-container collapsed-right"> 
+         <div [ngClass]="iscollapsed?'col-1':'sidebar-expanded'">
             <!-- <app-side-menu (toggleSideMenu)="toggleSideMenuFunction($event)"></app-side-menu> -->
 
             <!-- <div class="col-2"> -->
@@ -170,7 +170,7 @@
 <!-- </div> -->
 
         </div>
-        <div [ngClass]="iscollapsed?'col-11':'col-10'">
+        <div [ngClass]="iscollapsed?'col-11':'right-container'">
             <!-- <app-playarea></app-playarea> -->
             <gridster [options]="options " *ngIf="loaded " style="background: #fff;" >
 

@@ -194,19 +194,27 @@ span.menu-icon-left {
 }
 
 .menu-collapsed i.fa-chevron-down {float: right;margin-top: 5px;}
-/*#sidebar-container {
+#sidebar-container {
     position: absolute !important;
     left: 0;
     z-index: 9;
-}*/
+}
 .body-container {
-    padding-left: 250px;
+    
     position: relative;
 }
 .right-container {
-    /* position: relative; */
+    position: relative;
     height: 85vh;
 }
 /*gridster.fixed {
     overflow: inherit !important;
 }*/
+.body-container.collapsed-right {
+    padding-left: 250px;
+    position: relative;
+}
+.body-container.expand-right {
+    padding-left: 60px;
+    position: relative;
+}
